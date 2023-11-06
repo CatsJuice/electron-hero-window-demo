@@ -1,7 +1,4 @@
 import { PropsWithChildren, useCallback, useState } from "react";
-import UpdateElectron from "@/components/update";
-import logoVite from "./assets/logo-vite.svg";
-import logoElectron from "./assets/logo-electron.svg";
 import "./App.css";
 
 console.log(
@@ -44,7 +41,7 @@ function App() {
   return (
     <div className="stage">
       {cards.map((card, i) => (
-        <Card {...card} onActiveChange={(v) => onActiveChange(v, i)} />
+        <Card key={i} {...card} onActiveChange={(v) => onActiveChange(v, i)} />
       ))}
     </div>
   );
