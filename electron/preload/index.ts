@@ -100,7 +100,6 @@ window.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("mousemove", (e) => {
     const target = e.target as HTMLElement;
     const card = target.closest(".card");
-    console.log("card", !!card, "through", through)
     if (card && through) {
       ipcRenderer.send("set-ignore-mouse-events", false, { forward: true });
       through = false;

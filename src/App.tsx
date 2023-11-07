@@ -1,5 +1,6 @@
 import { PropsWithChildren, useCallback, useState } from "react";
 import "./App.css";
+import { Editor, WidthFixedEditor } from "./Editor";
 
 console.log(
   "[App.tsx]",
@@ -41,7 +42,9 @@ function App() {
   return (
     <div className="stage">
       {cards.map((card, i) => (
-        <Card key={i} {...card} onActiveChange={(v) => onActiveChange(v, i)} />
+        <Card key={i} {...card} onActiveChange={(v) => onActiveChange(v, i)}>
+          <WidthFixedEditor />
+        </Card>
       ))}
     </div>
   );
@@ -57,8 +60,8 @@ function Card({
   onActiveChange,
 }: CardProps) {
   const style = {
-    width: active ? "100vw" : "240px",
-    height: active ? "100vh" : "320px",
+    width: active ? "100vw" : "280px",
+    height: active ? "100vh" : "360px",
     left: `${active ? 0 : left}px`,
     top: `${active ? 0 : top}px`,
     zIndex: active ? 11 : z ?? 0,
@@ -67,7 +70,7 @@ function Card({
 
   return (
     <div className="card" style={style} onClick={() => onActiveChange(!active)}>
-      {children}
+      <div className="card-content">{children}</div>
     </div>
   );
 }

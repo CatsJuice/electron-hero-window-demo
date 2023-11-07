@@ -130,7 +130,6 @@ ipcMain.handle("open-win", (_, arg) => {
 
 ipcMain.on("set-ignore-mouse-events", (event, ignore, options) => {
   const win = BrowserWindow.fromWebContents(event.sender);
-  console.log("set-ignore-mouse-events", ignore, options);
   if (!win) return;
   win.setIgnoreMouseEvents(ignore, options);
 });
